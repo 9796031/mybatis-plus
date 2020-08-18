@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    username: lab_972699721
+    password: 2125_aa692_#@1
+    url: jdbc:mysql://rm-bp17rs6x3634h47kkdo.mysql.rds.aliyuncs.com:3306/dev
+    driver-class-name: com.mysql.cj.jdbc.Driver
