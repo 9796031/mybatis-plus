@@ -1,6 +1,6 @@
 
 # 1 单表增删改查
-UserTest  
+com.home.mybatis.plus.a.user.UserTest   
 依赖表数据
 ```sql
 DROP TABLE IF EXISTS user;
@@ -22,7 +22,29 @@ INSERT INTO user (id, name, age, email) VALUES
 (3, 'Tom', 28, 'test3@baomidou.com'),
 (4, 'Sandy', 21, 'test4@baomidou.com'),
 (5, 'Billie', 24, 'test5@baomidou.com');
+
+
+create table address(
+id bigint(20) primary key auto_increment,
+user_id bigint(20) not null,
+addr varchar(50) default '' not null
+);
+
+insert into address (id,user_id, addr) values
+(1,1,'北京'),
+(2,1,'上海'),
+(3,2,'黑河'),
+(4,3,'哈尔滨');
+
 ```
+# 2 active record方式演示
+可以直接通过UserEntity对象链式操作进行增删改查
+com.home.mybatis.plus.b.user.UserEntityTest类  
+**注意:**
+- UserEntity需要继承com.baomidou.mybatisplus.extension.activerecord.Model
+- UserEntity类需要重写```pkVal```方法
+- 虽然不用UserEntityMapper但是也要有
+
 # 2 生成器
 生成器是mybatis-plus提供的, 方便通用mapper, service, controller  
 
