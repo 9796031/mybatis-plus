@@ -6,6 +6,7 @@ CREATE TABLE user
 	name VARCHAR(30) NULL DEFAULT NULL COMMENT '姓名',
 	age INT(11) NULL DEFAULT NULL COMMENT '年龄',
 	email VARCHAR(50) NULL DEFAULT NULL COMMENT '邮箱',
+	operator varchar(50) default null comment '操作人',
 	PRIMARY KEY (id)
 );
 

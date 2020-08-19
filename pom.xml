@@ -15,6 +15,11 @@
         <relativePath/>
     </parent>
     <dependencies>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+            <version>2.1.0.RELEASE</version>
+        </dependency>
         <!-- 使用代码生成器时需要引用的依赖 -->
         <dependency>
             <groupId>com.baomidou</groupId>

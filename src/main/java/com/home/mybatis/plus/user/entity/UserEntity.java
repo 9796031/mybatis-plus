@@ -1,5 +1,7 @@
 package com.home.mybatis.plus.user.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.core.mapper.Mapper;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -18,6 +20,8 @@ import java.io.Serializable;
 @Accessors(chain = true)
 @TableName("user")
 public class UserEntity extends Model<UserEntity> {
+    /** 使用数据库自增主键, AR模式下默认使用雪花算法生成主键 */
+    @TableId(type = IdType.AUTO)
     private Long id;
     private String name;
     private Integer age;

@@ -45,6 +45,8 @@ com.home.mybatis.plus.b.user.UserEntityTest类
 - UserEntity类需要重写```pkVal```方法
 - 虽然不用UserEntityMapper但是也要有
 
+**AR方式, 主键ID默认使用雪花算法生成ID**
+
 # 2 生成器
 生成器是mybatis-plus提供的, 方便通用mapper, service, controller  
 
