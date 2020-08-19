@@ -12,10 +12,10 @@ import java.io.Serializable;
  * @author qingdong.li
  * @date 2020/8/19 3:41 下午
  * 注意Accessors注解添加后, 使用BeanUtils.populate()方法是会有问题
+ * TableName : 映射数据库表名
  */
 @Data
 @Accessors(chain = true)
-/** 映射数据库表名 */
 @TableName("user")
 public class UserEntity extends Model<UserEntity> {
     private Long id;
