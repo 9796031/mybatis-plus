@@ -2,6 +2,7 @@ package com.home.mybatis.plus.handle;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,10 @@ public class OperatorMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         log.info("insert fill success !!!");
-        this.strictInsertFill(metaObject, "operator", String.class, "insertFill");
+        String operator = (String)this.getFieldValByName("operator", metaObject);
+        if (StringUtils.isEmpty(operator)) {
+            this.strictInsertFill(metaObject, "operator", String.class, "insertFill");
+        }
     }
 
     /**

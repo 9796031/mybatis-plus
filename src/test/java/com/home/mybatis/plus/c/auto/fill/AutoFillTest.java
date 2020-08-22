@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.home.mybatis.plus.MybatisPlusBootstrapTest;
 import com.home.mybatis.plus.user.entity.UserEntity;
@@ -30,10 +29,27 @@ public class AutoFillTest extends MybatisPlusBootstrapTest {
             new UserEntity().selectOne(Wrappers.<UserEntity>lambdaQuery().eq(UserEntity::getName, "小A"));
         assertThat(result).isNotNull();
         assertThat(result.getOperator()).isEqualTo("insertFill");
+        result.deleteById();
+    }
+
+    /**
+     * 测试手动设置操作人, 不通过注入器注入值
+     */
+    @Test
+    public void testInsertUnFill() {
+        boolean userEntity =
+            new UserEntity().setAge(26).setName("小B").setEmail("aa@163.com").setOperator("test").insert();
+        assertThat(userEntity).isTrue();
+        UserEntity result =
+            new UserEntity().selectOne(Wrappers.<UserEntity>lambdaQuery().eq(UserEntity::getName, "小A"));
+        assertThat(result).isNotNull();
+        assertThat(result.getOperator()).isEqualTo("test");
+        result.deleteById();
     }
 
     @Test
     public void testUpdateFill() {
+        testInsertFill();
         boolean update =
             new UserEntity().setName("小a").update(Wrappers.<UserEntity>lambdaUpdate().eq(UserEntity::getName, "小A"));
         assertThat(update).isTrue();
@@ -41,11 +57,7 @@ public class AutoFillTest extends MybatisPlusBootstrapTest {
             new UserEntity().selectOne(Wrappers.<UserEntity>lambdaQuery().eq(UserEntity::getName, "小a"));
         assertThat(userEntity).isNotNull();
         assertThat(userEntity.getOperator()).isEqualTo("updateFill");
+        userEntity.deleteById();
     }
 
-    @Test
-    public void testDelete() {
-        boolean user = new UserEntity().delete(new LambdaQueryWrapper<UserEntity>().eq(UserEntity::getName, "小a"));
-        assertThat(user).isTrue();
-    }
 }
