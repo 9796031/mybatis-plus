@@ -1,6 +1,8 @@
 package com.home.mybatis.plus.user.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.core.mapper.Mapper;
@@ -26,6 +28,9 @@ public class UserEntity extends Model<UserEntity> {
     private String name;
     private Integer age;
     private String email;
+    /** 插入和更新时自动注入该字段 */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private String operator;
 
     @Override
     protected Serializable pkVal() {

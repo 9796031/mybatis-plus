@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS user;
 
 CREATE TABLE user
 (
-	id BIGINT(20) NOT NULL COMMENT '主键ID',
+	id BIGINT(20) NOT NULL COMMENT '主键ID' auto_increment,
 	name VARCHAR(30) NULL DEFAULT NULL COMMENT '姓名',
 	age INT(11) NULL DEFAULT NULL COMMENT '年龄',
 	email VARCHAR(50) NULL DEFAULT NULL COMMENT '邮箱',
@@ -47,9 +47,18 @@ com.home.mybatis.plus.b.user.UserEntityTest类
 
 **AR方式, 主键ID默认使用雪花算法生成ID**
 
-# 2 生成器
+# 2 自动填充字段
+## 2.1 测试类
+com.home.mybatis.plus.c.auto.fill.AutoFillTest
+## 2.2 使用配置
+1. 配置填充内容, insert,update时如何处理自动填充字段
+com.home.mybatis.plus.handle.OperatorMetaObjectHandler
+2. 实体类将需要填充的字段添加上@TableField(fill = FieldFill.INSERT_UPDATE)注解
+注解属性可选
+
+# 3 生成器
 生成器是mybatis-plus提供的, 方便通用mapper, service, controller  
 
 生成的类在com.home.mybatis.plus.address.*
-# 3 测试生成器生成service使用
+# 4 测试生成器生成service使用
 com.home.mybatis.plus.address.AddressTest
