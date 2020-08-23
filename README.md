@@ -56,9 +56,14 @@ com.home.mybatis.plus.handle.OperatorMetaObjectHandler
 2. 实体类将需要填充的字段添加上@TableField(fill = FieldFill.INSERT_UPDATE)注解
 注解属性可选
 
-# 3 生成器
+# 3 执行SQL分析
+注入SqlExplainInterceptor对象  
+在Mapper接口中添加```@Mapper```注解  
+通过控制台进行查看
+
+# 4 生成器
 生成器是mybatis-plus提供的, 方便通用mapper, service, controller  
 
 生成的类在com.home.mybatis.plus.address.*
-# 4 测试生成器生成service使用
+# 5 测试生成器生成service使用
 com.home.mybatis.plus.address.AddressTest
